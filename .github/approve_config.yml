@@ -3,7 +3,7 @@ approvals:
   # minimum: 2     # optional
   groups:        # optional
     - name: application-development
-      minimum: 1 
+      minimum: 2
       from:
         - yuichielectric-demo
         - boosef
