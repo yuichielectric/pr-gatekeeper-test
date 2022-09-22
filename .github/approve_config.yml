@@ -5,7 +5,7 @@ approvals:
     - name: application-development
       minimum: 1 
       from:
-        - yuichielectric
+        - yuichielectric-demo
         - boosef
     - name: infra-team
       minimum: 1
