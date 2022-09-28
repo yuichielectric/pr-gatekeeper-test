@@ -1,4 +1,5 @@
 name: 'PR Gatekeeper'
+run-name: 'PR GATEKEEPER'
 
 on:
   pull_request:
@@ -20,7 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run-name: 'PR GATEKEEPER'
-        uses: octodemo/pr-gatekeeper@job-summary
+      - uses: octodemo/pr-gatekeeper@job-summary
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
