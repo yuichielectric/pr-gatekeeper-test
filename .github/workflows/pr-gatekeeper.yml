@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: octodemo/pr-gatekeeper@job-summary
+      - run-name: 'PR GATEKEEPER'
+        uses: octodemo/pr-gatekeeper@job-summary
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
