@@ -1,21 +1,3 @@
 approvals:
   # check will fail if there is no approval
-  # minimum: 2     # optional
-  groups:        # optional
-    - name: application-development
-      minimum: 2
-      from:
-        - yuichielectric-demo
-        - boosef
-    - name: infra-team
-      minimum: 1
-      from:
-        - rohitnb
-        - mohan-the-octocat
-    - name: security-team
-      minimum: 1
-      from:
-        - dchomh
-        - affrae
-     
- 
+  minimum: 1     # optional
