@@ -1,35 +1,25 @@
-name: 'Pull Request approval policies validator'
+name: 'PR Gatekeeper'
+
 on:
   pull_request:
-    branches:
-      - 'feature**'
-      - 'release**'
-      - 'main**'
+    types:
+      [
+        assigned,
+        unassigned,
+        opened,
+        reopened,
+        synchronize,
+        review_requested,
+        review_request_removed
+      ]
   pull_request_review:
-    branches:
-      - 'feature**'
-      - 'release**'
-      - 'main**'
-env:
-  POLICY_FILE_NAME: dummy-policy.yml
+
 jobs:
-  select-and-enforce-approval-policy:
-    name: Identify the approval policy file based on the target branch of this PR and run pr-gatekeeper
+  pr-gatekeeper:
+    name: PR Gatekeeper
     runs-on: ubuntu-latest
     steps:
-      - name: Select branch-based policy file
-        uses: iamtheyammer/branch-env-vars@v1.2.0
+      - uses: actions/checkout@v2
+      - uses: octodemo/pr-gatekeeper@add-debug-log
         with:
-          POLICY_FILE_NAME: |
-            !pr>main*:main-policy.yml
-            !pr>release*:release-policy.yml
-            !pr>feature*:feature-policy.yml
-      - name: "Print the Policy file's name"
-        run: echo "Policy file selected is $POLICY_FILE_NAME"
-      - name: Checkout Action
-        uses: actions/checkout@v2
-      - name: Run the PR gate keeper action with the selected policy file
-        uses: octodemo/pr-gatekeeper@unique-status-name
-        with:
-          config-file: './.github/${{ env.POLICY_FILE_NAME }}'
           token: ${{ secrets.GITHUB_TOKEN }}
