@@ -1,0 +1,10 @@
+approvals:
+  # check will fail if there is no approval
+  # minimum: 2     # optional
+  groups:        # optional
+    - name: security-team
+      minimum: 1
+      from:
+        - dchomh
+        - affrae
+    

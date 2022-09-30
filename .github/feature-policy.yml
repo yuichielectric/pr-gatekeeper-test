@@ -1,0 +1,8 @@
+approvals:
+  minimum: 0
+  groups:        # optional
+    - name: application-development
+      minimum: 0
+      from:
+        - yuichielectric
+        - boosef
